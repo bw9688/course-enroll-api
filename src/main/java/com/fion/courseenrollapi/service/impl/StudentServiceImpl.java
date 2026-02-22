@@ -4,13 +4,11 @@ import com.fion.courseenrollapi.dao.CourseDao;
 import com.fion.courseenrollapi.dao.StudentDao;
 import com.fion.courseenrollapi.dto.CourseDto;
 import com.fion.courseenrollapi.dto.res.GetStudentCourseRes;
-import com.fion.courseenrollapi.model.Course;
 import com.fion.courseenrollapi.model.Student;
 import com.fion.courseenrollapi.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,19 +40,8 @@ public class StudentServiceImpl implements StudentService {
         res.setStudentId(student.getId());
         res.setStudentName(student.getName());
 
-        List<Course> courseList = courseDao.getCoursesByStudentId(studentId);
-        List<CourseDto> courseDtoList = new ArrayList<>();
-        for (Course course : courseList) {
-            courseDtoList.add(CourseDto.builder()
-                    .courseName(course.getCourseName())
-                    .weekday(course.getWeekday())
-                    .startTime(course.getStartTime())
-                    .endTime(course.getEndTime())
-                    .semester(course.getSemester())
-                    .teacher(course.getTeacher())
-                    .isRequired(course.getIsRequired())
-                    .build());
-        }
+        List<CourseDto> courseDtoList = courseDao.getCourseDtoListByStudentId(studentId);
+
         res.setCourse(courseDtoList);
 
         return res;

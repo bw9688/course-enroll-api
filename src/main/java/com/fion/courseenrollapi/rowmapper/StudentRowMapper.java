@@ -1,4 +1,4 @@
-package com.fion.courseenrollapi.dao.mapper;
+package com.fion.courseenrollapi.rowmapper;
 
 import com.fion.courseenrollapi.model.Student;
 import org.springframework.jdbc.core.RowMapper;

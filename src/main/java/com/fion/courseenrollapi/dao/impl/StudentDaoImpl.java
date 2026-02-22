@@ -1,7 +1,7 @@
 package com.fion.courseenrollapi.dao.impl;
 
 import com.fion.courseenrollapi.dao.StudentDao;
-import com.fion.courseenrollapi.dao.mapper.StudentRowMapper;
+import com.fion.courseenrollapi.rowmapper.StudentRowMapper;
 import com.fion.courseenrollapi.model.Student;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
