@@ -28,8 +28,6 @@ class StudentController {
     public ResponseEntity<GetStudentCourseRes> getStudentCourse(@PathVariable String studentId){
         GetStudentCourseRes res = studentService.getStudentCourse(studentId);
         if (res == null){
-            log.debug("找不到此學生");
-            System.out.println("找不到此學生");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.status(HttpStatus.OK).body(res);
@@ -39,7 +37,7 @@ class StudentController {
     public ResponseEntity<Student> getStudentData(@PathVariable String studentId){
         Optional<Student> studentOpt = studentService.getStudentById(studentId);
         if (studentOpt.isEmpty()){
-            System.out.println("找不到此學生");
+            log.debug("找不到此學生");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
