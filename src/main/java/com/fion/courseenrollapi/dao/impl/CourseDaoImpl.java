@@ -22,7 +22,7 @@ public class CourseDaoImpl implements CourseDao {
     public List<CourseDto> getCourseDtoListByStudentId(String studentId) {
         String sql = """
                 SELECT c.course_name, c.weekday, c.start_time, c.end_time, c.semester, c.is_required, c.teacher
-                FROM course c JOIN grade g ON c.course_id = g.course_id
+                FROM course c INNER JOIN grade g ON c.course_id = g.course_id
                 WHERE g.student_id = :studentId
                 """;
 
