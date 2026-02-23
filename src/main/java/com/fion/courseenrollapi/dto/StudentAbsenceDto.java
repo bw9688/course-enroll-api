@@ -9,11 +9,9 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder
-public class AttendanceDto {
+public class StudentAbsenceDto {
     private String studentId;
     private String studentName;
-    private String courseName;
-    private Short weekday;
     private LocalDateTime attendTime;
-    private Short attendanceStatus;
+    private Boolean attendanceStatus;
 }

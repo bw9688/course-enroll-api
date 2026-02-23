@@ -36,7 +36,11 @@ class StudentController {
 
     @GetMapping("/absence/{studentId}")
     public ResponseEntity<GetStudentAbsenceRes> getStudentAbsence(@PathVariable String studentId){
-        return null;
+        GetStudentAbsenceRes res = studentService.getStudentAbsence(studentId);
+        if (res == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(res);
     }
 
     @GetMapping("/data/{studentId}")
