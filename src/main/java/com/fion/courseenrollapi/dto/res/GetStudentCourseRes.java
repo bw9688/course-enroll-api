@@ -1,6 +1,6 @@
 package com.fion.courseenrollapi.dto.res;
 
-import com.fion.courseenrollapi.dto.CourseDto;
+import com.fion.courseenrollapi.dto.StudentCourseDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,5 +11,5 @@ import java.util.List;
 public class GetStudentCourseRes {
     private String studentId;
     private String studentName;
-    private List<CourseDto> course;
+    private List<StudentCourseDto> course;
 }

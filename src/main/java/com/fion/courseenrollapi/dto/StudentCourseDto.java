@@ -7,7 +7,7 @@ import java.time.LocalTime;
 
 @Getter
 @Setter
-public class CourseDto {
+public class StudentCourseDto {
     private String courseName;
     private Short weekday;
     private LocalTime startTime;

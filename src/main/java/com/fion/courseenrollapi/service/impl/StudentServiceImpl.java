@@ -2,7 +2,7 @@ package com.fion.courseenrollapi.service.impl;
 
 import com.fion.courseenrollapi.dao.CourseDao;
 import com.fion.courseenrollapi.dao.StudentDao;
-import com.fion.courseenrollapi.dto.CourseDto;
+import com.fion.courseenrollapi.dto.StudentCourseDto;
 import com.fion.courseenrollapi.dto.res.GetStudentCourseRes;
 import com.fion.courseenrollapi.model.Student;
 import com.fion.courseenrollapi.service.StudentService;
@@ -40,9 +40,9 @@ public class StudentServiceImpl implements StudentService {
         res.setStudentId(student.getId());
         res.setStudentName(student.getName());
 
-        List<CourseDto> courseDtoList = courseDao.getCourseDtoListByStudentId(studentId);
+        List<StudentCourseDto> studentCourseDtoList = courseDao.getCourseDtoListByStudentId(studentId);
 
-        res.setCourse(courseDtoList);
+        res.setCourse(studentCourseDtoList);
 
         return res;
     }

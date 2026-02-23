@@ -1,6 +1,6 @@
 package com.fion.courseenrollapi.rowmapper;
 
-import com.fion.courseenrollapi.dto.CourseDto;
+import com.fion.courseenrollapi.dto.StudentCourseDto;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.lang.Nullable;
 
@@ -8,11 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalTime;
 
-public class CourseDtoRowMapper implements RowMapper<CourseDto> {
+public class CourseDtoRowMapper implements RowMapper<StudentCourseDto> {
     @Nullable
     @Override
-    public CourseDto mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-        CourseDto courseDto = new CourseDto();
+    public StudentCourseDto mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+        StudentCourseDto studentCourseDto = new StudentCourseDto();
 
         String courseName = resultSet.getString("course_name");
         Short weekday = resultSet.getShort("weekday");
@@ -22,14 +22,14 @@ public class CourseDtoRowMapper implements RowMapper<CourseDto> {
         Boolean isRequired = resultSet.getBoolean("is_required");
         String teacher = resultSet.getString("teacher");
 
-        courseDto.setCourseName(courseName);
-        courseDto.setWeekday(weekday);
-        courseDto.setStartTime(startTime);
-        courseDto.setEndTime(endTime);
-        courseDto.setSemester(semester);
-        courseDto.setIsRequired(isRequired);
-        courseDto.setTeacher(teacher);
+        studentCourseDto.setCourseName(courseName);
+        studentCourseDto.setWeekday(weekday);
+        studentCourseDto.setStartTime(startTime);
+        studentCourseDto.setEndTime(endTime);
+        studentCourseDto.setSemester(semester);
+        studentCourseDto.setIsRequired(isRequired);
+        studentCourseDto.setTeacher(teacher);
 
-        return courseDto;
+        return studentCourseDto;
     }
 }

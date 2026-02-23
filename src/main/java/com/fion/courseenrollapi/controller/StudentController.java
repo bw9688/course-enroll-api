@@ -1,5 +1,6 @@
 package com.fion.courseenrollapi.controller;
 
+import com.fion.courseenrollapi.dto.res.GetStudentAbsenceRes;
 import com.fion.courseenrollapi.dto.res.GetStudentCourseRes;
 import com.fion.courseenrollapi.model.Student;
 import com.fion.courseenrollapi.service.StudentService;
@@ -31,6 +32,11 @@ class StudentController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.status(HttpStatus.OK).body(res);
+    }
+
+    @GetMapping("/absence/{studentId}")
+    public ResponseEntity<GetStudentAbsenceRes> getStudentAbsence(@PathVariable String studentId){
+        return null;
     }
 
     @GetMapping("/data/{studentId}")

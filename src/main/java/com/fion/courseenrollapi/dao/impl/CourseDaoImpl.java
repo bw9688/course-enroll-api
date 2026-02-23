@@ -1,7 +1,7 @@
 package com.fion.courseenrollapi.dao.impl;
 
 import com.fion.courseenrollapi.dao.CourseDao;
-import com.fion.courseenrollapi.dto.CourseDto;
+import com.fion.courseenrollapi.dto.StudentCourseDto;
 import com.fion.courseenrollapi.rowmapper.CourseDtoRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -19,7 +19,7 @@ public class CourseDaoImpl implements CourseDao {
     }
 
     @Override
-    public List<CourseDto> getCourseDtoListByStudentId(String studentId) {
+    public List<StudentCourseDto> getCourseDtoListByStudentId(String studentId) {
         String sql = """
                 SELECT c.course_name, c.weekday, c.start_time, c.end_time, c.semester, c.is_required, c.teacher
                 FROM course c INNER JOIN grade g ON c.course_id = g.course_id
