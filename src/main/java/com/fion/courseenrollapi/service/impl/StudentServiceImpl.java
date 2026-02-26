@@ -48,7 +48,7 @@ public class StudentServiceImpl implements StudentService {
         res.setStudentId(student.getId());
         res.setStudentName(student.getName());
 
-        List<StudentCourseDto> studentCourseDtoList = courseDao.getCourseDtoListByStudentId(studentId);
+        List<StudentCourseDto> studentCourseDtoList = courseDao.getStudentCourseDtoListByStudentId(studentId);
 
         res.setCourse(studentCourseDtoList);
 

@@ -1,8 +1,10 @@
 package com.fion.courseenrollapi.dao.impl;
 
 import com.fion.courseenrollapi.dao.CourseDao;
+import com.fion.courseenrollapi.dto.CourseDto;
 import com.fion.courseenrollapi.dto.StudentCourseDto;
 import com.fion.courseenrollapi.rowmapper.CourseDtoRowMapper;
+import com.fion.courseenrollapi.rowmapper.StudentCourseDtoRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +21,7 @@ public class CourseDaoImpl implements CourseDao {
     }
 
     @Override
-    public List<StudentCourseDto> getCourseDtoListByStudentId(String studentId) {
+    public List<StudentCourseDto> getStudentCourseDtoListByStudentId(String studentId) {
         String sql = """
                 SELECT c.course_name, c.weekday, c.start_time, c.end_time, c.semester, c.is_required, c.teacher
                 FROM course c INNER JOIN grade g ON c.course_id = g.course_id
@@ -29,6 +31,16 @@ public class CourseDaoImpl implements CourseDao {
         Map<String, Object> map = new HashMap<>();
         map.put("studentId", studentId);
 
-        return namedParameterJdbcTemplate.query(sql,map,new CourseDtoRowMapper());
+        return namedParameterJdbcTemplate.query(sql, map, new StudentCourseDtoRowMapper());
     }
+
+    @Override
+    public List<CourseDto> getCourseList() {
+        String sql = """
+                SELECT course_id, course_name, is_required
+                FROM course;
+                """;
+        return namedParameterJdbcTemplate.query(sql, new CourseDtoRowMapper());
+    }
+
 }
