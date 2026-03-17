@@ -20,7 +20,7 @@ class CourseController {
         this.courseService = courseService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<GetCourseRes> getCourse() {
         GetCourseRes res = courseService.getCourse();
         return ResponseEntity.status(HttpStatus.OK).body(res);
