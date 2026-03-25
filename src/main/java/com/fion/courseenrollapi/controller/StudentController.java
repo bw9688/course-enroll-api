@@ -26,27 +26,27 @@ class StudentController {
     }
 
     @GetMapping("/{studentId}")
-    public ResponseEntity<GetStudentCourseRes> getStudentCourse(@PathVariable String studentId){
+    public ResponseEntity<GetStudentCourseRes> getStudentCourse(@PathVariable String studentId) {
         GetStudentCourseRes res = studentService.getStudentCourse(studentId);
-        if (res == null){
+        if (res == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.status(HttpStatus.OK).body(res);
     }
 
     @GetMapping("/absence/{studentId}")
-    public ResponseEntity<GetStudentAbsenceRes> getStudentAbsence(@PathVariable String studentId){
+    public ResponseEntity<GetStudentAbsenceRes> getStudentAbsence(@PathVariable String studentId) {
         GetStudentAbsenceRes res = studentService.getStudentAbsence(studentId);
-        if (res == null){
+        if (res == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.status(HttpStatus.OK).body(res);
     }
 
     @GetMapping("/data/{studentId}")
-    public ResponseEntity<Student> getStudentData(@PathVariable String studentId){
+    public ResponseEntity<Student> getStudentData(@PathVariable String studentId) {
         Optional<Student> studentOpt = studentService.getStudentById(studentId);
-        if (studentOpt.isEmpty()){
+        if (studentOpt.isEmpty()) {
             log.debug("找不到此學生");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
